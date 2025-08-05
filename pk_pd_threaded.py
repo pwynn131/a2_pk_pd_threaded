@@ -86,9 +86,9 @@ def save_patient_summary(df_fit, df_true, summary, N, T, run_descrptn, output_di
         if p == 'A':
             true_values = A_true
         elif p == 'c':
-            true_values = np.exp(c_true)
+            true_values = c_true
         elif p == 'gamma':
-            true_values = np.exp(gamma_true)
+            true_values = gamma_true
         else:
             raise ValueError(f"Unknown parameter: {p}")
         rhat_series = summary.loc[summary.index.str.startswith(p + '['), 'R_hat']
@@ -209,9 +209,9 @@ fit = model.sample(data=stan_data,
                    chains=1,
                    threads_per_chain=8,
                    iter_sampling=1000,
-                   iter_warmup=1500,
+                   iter_warmup=1000,
                    show_console=True,
-                   adapt_delta=0.9,
+                   adapt_delta=0.7,
                    inits=init_fn())
 df_fit = fit.draws_pd()
 summary = fit.summary()

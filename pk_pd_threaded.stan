@@ -89,7 +89,7 @@ model {
   beta_A_age ~ normal(0, 0.001);
   beta_A_SOFA ~ normal(0, 0.001);
 
-  beta_c_0 ~ normal(2, 1);
+  beta_c_0 ~ normal(3, 1);
   beta_c_age ~ normal(0, .01);
   beta_c_SOFA ~ normal(0, 0.01);
 
